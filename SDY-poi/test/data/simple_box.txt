@@ -1,0 +1,70 @@
+level-0
+	level-1(1)
+		level-2(1)
+		level-2(2)
+	level-1(2)
+		level-2(3)
+			level-3(1)
+				level-4(1)
+		level-2(4)
+
+	IF: condition-1
+		body-1(1)
+		body-1(2)
+	ELSE IF: condition-2
+		body-2(1)
+			body-2(1)-1
+	ELSE IF: condition-3
+		body-3(1)
+	ELSE:
+		body-4(1)
+		
+	SWITCH: expression
+	CASE: case-1
+		body-1(1)
+		body-1(2)
+	CASE: case-2
+		body-2(1)
+			body-2(1)-1
+		break
+	CASE: case-3
+		body-3(1)
+	CASE:
+		body-4(1)
+	
+	TRY:
+	RES: res-1
+	RES: res-2
+		body-1
+		body-2
+	CATCH: exp-1
+		exp body-1
+		exp body-2
+	CATCH: exp-2
+		exp body-3
+			FLOWCHART: 処理フローA
+		exp body-4
+	FINALLY:
+		finally body-1
+		finally body-2
+	         
+	WHILE: expression
+		body-1
+			FLOWCHART: 処理フローB
+				body-1
+				body-2
+		body-2
+
+	FOR: infix expression
+		body-1
+		body-2
+	
+	DO:
+		body-1
+		WHILE: expression
+			body-2-1
+		body-3
+	WHILE: do-expression
+
+second
+	body 2nd -1

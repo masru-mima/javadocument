@@ -1,0 +1,41 @@
+<project name="devel" basedir="." default="run">
+	<property name="src.dir" value="src" />
+	<property name="build.dir" value="build" />
+	<property name="classes.dir" value="${build.dir}/classes" />
+	<property name="lib.dir" value="lib" />
+	
+	<target name="init">
+		<mkdir dir="${classes.dir}"/>
+	</target>
+		
+	<target name="compile" depends="init">
+		<javac destdir="${classes.dir}"
+			        encoding="UTF-8"
+		            fork="yes"
+		           debug="yes"
+			       includeantruntime="no"
+				   >
+			<classpath>
+				<fileset dir="${lib.dir}">
+					<include name="*.jar"/>
+				</fileset>
+			</classpath>
+			<src location="${src.dir}"/>
+		</javac>
+	</target>
+	
+	<target name="run" depends="compile">
+		<java classname="my.ast.app.SimpleMain"
+		          fork="yes"
+		         >
+			<classpath>
+				<pathelement location="${classes.dir}"/>
+				<fileset dir="${lib.dir}">
+					<include name="*.jar"/>
+				</fileset>
+			</classpath>
+			<arg value="src/test/IfStatement.java"/>
+			<arg value="UTF-8"/>
+		</java>
+	</target>
+</project>

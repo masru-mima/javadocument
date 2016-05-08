@@ -1,0 +1,212 @@
+CompilationUnit
+	package test;
+
+	import java.util.ArrayList;
+	import java.util.HashSet;
+	import java.util.List;
+	import java.util.Set;
+	タイプ定義  (public AllStatements)
+		キーワード一覧
+		private static Set<String> keywords=new HashSet<>()
+		処理結果一覧リスト
+		private List<String> list=new ArrayList<>()
+		Initializer
+			キーワード一覧を初期化する。
+			Modifier
+			Block
+				keywords.add("word1");
+				keywords.add("word2");
+		FLOWCHART: ワードがキーワードであるか否かを判定する。(public boolean isKeyword Exception(String word))
+			処理モードフラグ
+			int flag=1
+			try:
+				flagとwordの値に応じてflagをリセットする。
+				switch: flag
+				case: 1
+					word長が0より長ければflagを2にリセットする。
+					IF: word.length() > 0
+						flag=2;
+					ELSE: 
+						flag=1;
+					break;
+				case: 2
+				case: 3
+					work長が1より長ければ、flagを2にリセットする。
+					IF: word.length() > 1
+						flag=2;
+					ELSE: 
+						flag=1;
+					break;
+				default: 
+					モードの変更はしない。
+					break;
+			catch: Exception e
+				例外発生時には、モードを1に強制設定する。
+				flag=1;
+			finally:
+				リセット後のflag値を標準出力に出力する。
+				System.out.println("flag=" + flag);
+			キーワード一覧にワードが含まれているか否かで判定する。
+			IF: 含まれている場合 keywords.contains(word)
+				trueを返す
+				return true;
+			ELSE: 
+				false を返す
+				return false;
+		FLOWCHART: ワードの半角文字数を算出する。(public int length(String word))
+			文字数の格納領域
+			int len=0
+			各文字について、全角か半角かを判定して、半角換算文字数を加算する。
+			for: char c: word.toCharArray()
+				IF: 文字が日本語である場合 c > 0x80
+					半角換算文字数に2を加算する。
+					len+=2;
+				ELSE: 
+					半角換算文字数に1を加算する。
+					len++;
+			各文字について、全角か半角かを判定して、半角換算文字数を加算する。(whileバージョン)
+			int i=0
+			while: i < word.length()
+				第i文字目の文字 c を取得する。
+				char c=word.charAt(i)
+				IF: 文字が日本語である場合 c > 0x80
+					半角換算文字数に2を加算する。
+					len+=2;
+				ELSE: 
+					半角換算文字数に1を加算する。
+					len++;
+			各文字について、全角か半角かを判定して、半角換算文字数を加算する。(doバージョン)
+			i=0;
+			do: 
+				第i文字目の文字 c を取得する。
+				char c=word.charAt(i)
+				IF: 文字が日本語である場合 c > 0x80
+					半角換算文字数に2を加算する。
+					len+=2;
+				ELSE: 
+					半角換算文字数に1を加算する。
+					len++;
+				i++;
+			while: i < word.length()
+			半角換算数を返す。
+			return len;
+
+CompilationUnit
+	パッケージコメント
+	package test;
+
+	import java.util.ArrayList;
+	import java.util.List;
+	タイプ定義 クラスコメント (public Comment)
+		FLOWCHART: メソッドコメント(public static void methodA(int paraA))
+			処理フラッグの初期設定
+			int flag=1
+			処理 Aを実行する。
+			flagの値によって処理を振り分ける。
+			IF: flag == 1
+				処理 B1を実行する。
+			ELSE IF: flag == 2
+				処理 B2を実行する。
+			処理 Cを実行する。
+			処理 Dを実行する。
+
+CompilationUnit
+	パッケージコメント
+	package test;
+
+	import java.util.ArrayList;
+	import java.util.List;
+	タイプ定義 クラスコメント (public SwitchStatement)
+		FLOWCHART: メソッドコメント(public static void methodA)
+			処理フラッグの初期設定
+			int flag=1
+			判定処理全体のコメント
+			switch: flag
+			case: 1
+				case-1
+				flag=1;
+				break;
+			case: 2
+				case-2
+				flag=2;
+				break;
+			case: 3
+				case-3
+				flag=3;
+			default: 
+				case-default
+				flag=4;
+				break;
+
+CompilationUnit
+	package test;
+
+	import java.util.ArrayList;
+	import java.util.List;
+	タイプ定義  (public EnhancedForStatement)
+		FLOWCHART: (public void methodA)
+			List<Integer> list=new ArrayList<>()
+			for全体のコメント
+			for: Integer i: list
+				ブロック全体のコメント
+				行コメントはプリコメント
+				i=i + 1;
+				
+CompilationUnit
+	package test;
+
+	タイプ定義  (public ForStatement)
+		FLOWCHART: (public void methodA)
+			boolean flag=true
+			for全体のコメント
+			for: int i=0; i < 10; i++
+				ブロック全体のコメント
+				行コメントはプリコメント
+				flag=false;
+				
+CompilationUnit
+	package test;
+
+	タイプ定義  (public DoStatement)
+		FLOWCHART: (public void methodA)
+			boolean flag=true
+			do全体のコメント
+			do: 
+				ブロック全体のコメント
+				行コメントはプリコメント
+				flag=false;
+			while: flag == true
+			
+CompilationUnit
+	package test;
+
+	タイプ定義  (public WhileStatement)
+		FLOWCHART: (public void methodA)
+			boolean flag=true
+			while全体のコメント
+			while: flag == true
+				ブロック全体のコメント
+				行コメントはプリコメント
+				flag=false;
+
+CompilationUnit
+	package test;
+
+	import java.io.FileInputStream;
+	import java.io.FileOutputStream;
+	import java.io.InputStream;
+	import java.io.OutputStream;
+	タイプ定義  (public TryStatement)
+		FLOWCHART: (public void methodA)
+			try文の全体コメント
+			try:
+			res:InputStream ins=new FileInputStream("in.txt")
+			res:OutputStream os=new FileOutputStream("out.txt")
+				try blockのコメント
+				int a=1
+			catch: Exception e
+				キャッチコメント
+				e.printStackTrace();
+			finally:
+				ファイナリーコメント
+				System.out.println("finally block");

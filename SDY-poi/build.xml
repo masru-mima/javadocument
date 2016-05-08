@@ -1,0 +1,39 @@
+<project name="devel" basedir="." default="run">
+	<property name="src.dir" value="src" />
+	<property name="build.dir" value="build" />
+	<property name="classes.dir" value="${build.dir}/classes" />
+	<property name="lib.dir" value="lib" />
+	
+	<target name="init">
+		<mkdir dir="${classes.dir}"/>
+	</target>
+		
+	<target name="compile" depends="init">
+		<javac destdir="${classes.dir}"
+		        encoding="UTF-8"
+	                fork="yes"
+		        debug="yes"
+			includeantruntime="no"
+			>
+			<classpath>
+				<fileset dir="${lib.dir}">
+					<include name="*.jar"/>
+				</fileset>
+			</classpath>
+			<src location="${src.dir}"/>
+		</javac>
+	</target>
+	
+	<target name="run" depends="compile">
+		<java classname="my.draw.app.Main"
+		          fork="yes"
+		         >
+			<classpath>
+				<pathelement location="${classes.dir}"/>
+				<fileset dir="${lib.dir}">
+					<include name="*.jar"/>
+				</fileset>
+			</classpath>
+		</java>
+	</target>
+</project>
